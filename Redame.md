@@ -1,5 +1,6 @@
 ->To run application:
-1. There is already prepared template "index.html located in "../templates/index.html". You have to just run 'MarketCheckoutApplication' and type in your default browser "http://localhost:8080/"
+1. There is already prepared template "index.html located in "../templates/index.html". You have to just run
+'MarketCheckoutApplication' and type in your default browser "http://localhost:8080/"
 
 ->To prepare own template or use already defined template:
 1. Make sure your html contain at least form to manage 'UserRequestModel';
@@ -7,13 +8,15 @@
 3. Your html should support 'post' method, also contain message called 'result' to display cumulative results;
 4. You have to update 'urlGetUserPriceRequest' and 'templateUserPriceRequest' or replace it in proper places 
 in Get/Post mapping. In this example those temp string are temporary and should disappear in true project;
-5. you can always create own test template to run application and check application. To do this create .html template in templates folder. Your template have to contain at least:
+5. you can always create own test template to run application and check application. To do this create .html template
+in templates folder. Your template have to contain at least:
 <form method="post" th:action="@{/}" th:object="${userRequestModel}">
 <input type="text" th:field="*{itemName}">
 <input type="text" th:field="*{quantity}">
 <input type="submit" value="Scan">
 <p th:if="${result}!=null" th:text="${result}"></p>
-6. Next change is get rid of temp strings mentioned above or update it respectively "/"(define your Url path to display template by updating 'urlGetUserPriceRequest' string) and "index" ('templateUserPriceRequest' your template name). 
+6. Next change is get rid of temp strings mentioned above or update it respectively "/"(define your Url path to display
+template by updating 'urlGetUserPriceRequest' string) and "index" ('templateUserPriceRequest' your template name).
 
 
 ->Some explaination:
