@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body bgcolor="##666699">
+    <hr>
+    <form method="post" th:action="@{/}" th:object="${userRequestModel}" style="margin-left: 10%">
+        item name: <input type="text" th:field="*{itemName}" placeholder="item name"><br>
+        item quantity: <input type="text" th:field="*{quantity}" maxlength="9"><br>
+        <input type="submit" value="Scan" style="width:20%; height: 30px; background-color: darkorange"><br>
+        <br>
+    </form>
+    <hr>
+    <i><p th:if="${lastQuery}!=null" th:text="${lastQuery}"></p><br></i>
+    <p th:if="${result}!=null" th:text="${result}"></p>
+</body>
+</html>
