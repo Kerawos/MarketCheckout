@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>pl.akademiakodu</groupId>
-	<artifactId>AK_Spring_ExerciseMethod_BasicCalculator</artifactId>
+	<groupId>pl.mareksowa</groupId>
+	<artifactId>MarketCheckout</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>AK_Spring_ExerciseMethod_BasicCalculator</name>
-	<description>For practise</description>
+	<name>MarketCheckout</name>
+	<description>Technical Task for Junior Java Developer position at Pragmatic Coders</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
