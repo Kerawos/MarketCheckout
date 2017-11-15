@@ -66,7 +66,7 @@ public class ItemModelDaoImpl implements ItemModelDao {
         return false;
     }
 
-    public static int parseToInt(String str) {
+    public int parseToInt(String str) {
         if (str.length() > 9){
             throw new IllegalArgumentException("Application cannot calculate such big amount");
         }
