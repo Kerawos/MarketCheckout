@@ -26,9 +26,10 @@ public class ItemModelDaoImpl implements ItemModelDao {
 
 
     @Override
-    public int checkPrise(String itemName, int itemQuantity) {
+    public int checkPrise(String itemName, String itemQty) {
+        int itemQuantity = parseToInt(itemQty);
         if (itemQuantity < 0 || itemQuantity > Integer.MAX_VALUE){
-            throw new IllegalArgumentException("Item quantity should be between 0 - 2147483647");
+            throw new IllegalArgumentException("Item quantity should be between 0 - billion");
         }
         if (itemName==null || !isItemInDatabase(itemName)){
             throw new IllegalArgumentException("There is no '" + itemName + "' in database..");
@@ -63,5 +64,21 @@ public class ItemModelDaoImpl implements ItemModelDao {
             throw new IllegalArgumentException("Application cannot calculate such big amount");
         }
         return false;
+    }
+
+    public static int parseToInt(String str) {
+        if (str.length() > 9){
+            throw new IllegalArgumentException("Application cannot calculate such big amount");
+        }
+        int x = 0;
+        try
+        {
+            x = Integer.parseInt(str);
+        }
+        catch(NumberFormatException nfe)
+        {
+            throw new IllegalArgumentException("Quantity should be strictly a number");
+        }
+        return x;
     }
 }

@@ -30,23 +30,23 @@ public class PriceCheckoutIT {
     @Test public void integrationTest(){
         assertNotNull(userRequestModel);
         userRequestModel.setItemName("A");
-        userRequestModel.setQuantity(50);
+        userRequestModel.setQuantity("50");
         assertEquals(1200, itemModelDao.checkPrise(userRequestModel.getItemName(), userRequestModel.getQuantity()));
         userRequestModel.setItemName("D");
         assertEquals(1000, itemModelDao.checkPrise(userRequestModel.getItemName(), userRequestModel.getQuantity()));
-        userRequestModel.setQuantity(25);
+        userRequestModel.setQuantity("25");
         assertEquals(505, itemModelDao.checkPrise(userRequestModel.getItemName(), userRequestModel.getQuantity()));
     }
 
 
     @Test public void integrationTestExc(){
-        excCheck("C", 2147483647, "Application cannot calculate such big amount");
-        excCheck("B", -2, "Item quantity should be between 0 - 2147483647");
+        excCheck("C", "2147483647", "Application cannot calculate such big amount");
+        excCheck("B", "-2", "Item quantity should be between 0 - billion");
         String itemName = "AB";
-        excCheck(itemName, 50, "There is no '" + itemName + "' in database..");
+        excCheck(itemName, "50", "There is no '" + itemName + "' in database..");
     }
 
-    private void excCheck(String itemName, int itemQty, String message){
+    private void excCheck(String itemName, String itemQty, String message){
         userRequestModel.setItemName(itemName);
         try {
             userRequestModel.setQuantity(itemQty);

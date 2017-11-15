@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ItemModelDao {
     List<ItemModel> getAllItems();
-    int checkPrise(String itemName, int itemQuantity);
+    int checkPrise(String itemName, String itemQuantity);
     boolean isItemInDatabase(String itemName); //scan item
 //    void updateItemPrice(String itemName, int newPrice);
 //    void updateItemSpecialPrice(String itemName, int newSpecialPrice);

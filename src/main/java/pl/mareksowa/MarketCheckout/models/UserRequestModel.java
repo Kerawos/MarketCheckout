@@ -3,12 +3,12 @@ package pl.mareksowa.MarketCheckout.models;
 public class UserRequestModel {
 
     private String itemName;
-    private int quantity;
+    private String quantity;
 
     public UserRequestModel() {
     }
 
-    public UserRequestModel(String itemName, int quantity) {
+    public UserRequestModel(String itemName, String quantity) {
         this.itemName = itemName;
         this.quantity = quantity;
     }
@@ -21,11 +21,11 @@ public class UserRequestModel {
         this.itemName = itemName;
     }
 
-    public int getQuantity() {
+    public String getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
 }

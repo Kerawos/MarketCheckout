@@ -19,14 +19,14 @@ public class ItemModelDaoImplTest {
     }
 
     @Test public void testUnit(){
-        assertEquals(150, itemModelDaoImpl.checkPrise("A", 5));
-        assertEquals(70, itemModelDaoImpl.checkPrise("A", 3));
-        assertEquals(40, itemModelDaoImpl.checkPrise("A", 1));
-        assertEquals(80, itemModelDaoImpl.checkPrise("A", 2));
-        assertEquals(110, itemModelDaoImpl.checkPrise("A", 4));
-        assertEquals(40, itemModelDaoImpl.checkPrise("B", 5));
-        assertEquals(60, itemModelDaoImpl.checkPrise("C", 2));
-        assertEquals(65, itemModelDaoImpl.checkPrise("D", 3));
+        assertEquals(150, itemModelDaoImpl.checkPrise("A", "5"));
+        assertEquals(70, itemModelDaoImpl.checkPrise("A", "3"));
+        assertEquals(40, itemModelDaoImpl.checkPrise("A", "1"));
+        assertEquals(80, itemModelDaoImpl.checkPrise("A", "2"));
+        assertEquals(110, itemModelDaoImpl.checkPrise("A", "4"));
+        assertEquals(40, itemModelDaoImpl.checkPrise("B", "5"));
+        assertEquals(60, itemModelDaoImpl.checkPrise("C", "2"));
+        assertEquals(65, itemModelDaoImpl.checkPrise("D", "3"));
 
         assertTrue(itemModelDaoImpl.isItemInDatabase("A"));
         assertFalse(itemModelDaoImpl.isItemInDatabase("Z"));
@@ -37,12 +37,15 @@ public class ItemModelDaoImplTest {
     }
 
     @Test public void testExcOverAmount(){
-        excCheck("A", 2147483647, "Application cannot calculate such big amount");
+        excCheck("A", "2147483647", "Application cannot calculate such big amount");
         String itemName = "Z";
-        excCheck(itemName, 4, "There is no '" + itemName + "' in database..");
+        excCheck(itemName, "4", "There is no '" + itemName + "' in database..");
+        excCheck("D", "9999999999999", "Application cannot calculate such big amount");
+        excCheck("D", "some qty", "Quantity should be strictly a number");
+        excCheck("C", "-9", "Item quantity should be between 0 - billion");
     }
 
-    private void excCheck(String itemName, int itemQty, String message){
+    private void excCheck(String itemName, String itemQty, String message){
         try {
             itemModelDaoImpl.checkPrise(itemName, itemQty);
             fail("exc not catch");
