@@ -70,15 +70,13 @@ public class ItemModelDaoImpl implements ItemModelDao {
         if (str.length() > 9){
             throw new IllegalArgumentException("Application cannot calculate such big amount");
         }
-        int x = 0;
-        try
-        {
-            x = Integer.parseInt(str);
+        int parsed = 0;
+        try {
+            parsed = Integer.parseInt(str);
         }
-        catch(NumberFormatException nfe)
-        {
+        catch (NumberFormatException nfe) {
             throw new IllegalArgumentException("Quantity should be strictly a number");
         }
-        return x;
+        return parsed;
     }
 }
